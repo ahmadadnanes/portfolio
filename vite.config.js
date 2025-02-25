@@ -20,8 +20,15 @@ export default defineConfig({
     build: {
         manifest: true,
         outDir: 'public/build',
+        assetsDir: 'assets',
+        emptyOutDir: true, // Clear build folder before building
         rollupOptions: {
             input: 'resources/js/app.js',
+            output: {
+                assetFileNames: 'assets/[name].[ext]',
+                entryFileNames: 'assets/[name].js',
+                chunkFileNames: 'assets/[name].js',
+            },
         },
     },
 });
