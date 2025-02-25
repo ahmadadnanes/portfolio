@@ -18,7 +18,6 @@ export default defineConfig({
         }),
     ],
     build: {
-        manifest: true,
         outDir: 'public/build',
         assetsDir: 'assets',
         emptyOutDir: true, // Clear build folder before building
