@@ -15,8 +15,15 @@ class SkillController extends Controller
      */
     public function index(): \Inertia\Response
     {
+        $skills = Skill::all();
+
+        // Loop through each skill and prepend the asset URL for the icon
+        $skills->each(function ($skill) {
+            $skill->icon = asset('storage/' . $skill->icon);
+        });
+
         return Inertia::render('Skills/Index', [
-            'skills' => Skill::all()
+            'skills' => $skills
         ]);
     }
 

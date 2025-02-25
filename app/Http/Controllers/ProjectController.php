@@ -17,8 +17,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $projects = Project::all();
+
+        $projects->each(function ($project) {
+            $project->image = asset('storage/' . $project->image);
+        });
+
         return Inertia::render('Projects/Index', [
-            'projects' => Project::all()
+            'projects' => $projects
         ]);
     }
 
@@ -80,7 +86,7 @@ class ProjectController extends Controller
 
         $image = $project->image;
 
-        if($request->get('icon')) {
+        if($request->get('image')) {
 
             $request->validate([
                 "image" => [ "image", "mimes:jpeg,png,jpg,gif,svg", "max:2048"]
