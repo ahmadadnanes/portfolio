@@ -17,7 +17,7 @@ class WelcomeController extends Controller
 
         $skills = Skill::all();
         $skills->each(function($skill){
-            $skill->image = asset('storage/'. $skill->image);
+            $skill->image = asset('storage/'. $skill->icon);
         });
 
         return Inertia::render('Welcome' , ["skills" => $skills , "projects" => $projects]);
