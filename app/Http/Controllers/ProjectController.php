@@ -101,6 +101,8 @@ class ProjectController extends Controller
             "image" => $image
         ]);
 
+        //test
+
         return redirect('/projects')->with('success', 'Project updated!');
     }
 
